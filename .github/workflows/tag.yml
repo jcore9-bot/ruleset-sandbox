@@ -1,0 +1,9 @@
+name: Tag
+on: workflow_dispatch
+permissions: {contents: write}
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh release create v9.9.9 --repo "$GITHUB_REPOSITORY" --target main --notes test
+        env: {GH_TOKEN: "${{ github.token }}"}
